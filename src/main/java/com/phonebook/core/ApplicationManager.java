@@ -6,16 +6,19 @@ import com.phonebook.fw.UserHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
 public class ApplicationManager {
 
         protected WebDriver driver;
+        public static SoftAssert softAssert;
 
         UserHelper user;
         ContactHelper contact;
         HomePageHelper homePage;
+
 
 
     public void init() {
@@ -28,6 +31,7 @@ public class ApplicationManager {
         user = new UserHelper(driver);
         contact = new ContactHelper(driver);
         homePage = new HomePageHelper(driver);
+        softAssert = new SoftAssert();
 
     }
 

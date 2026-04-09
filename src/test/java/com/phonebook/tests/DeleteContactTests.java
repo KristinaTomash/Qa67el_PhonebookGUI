@@ -1,15 +1,21 @@
 package com.phonebook.tests;
 
+import com.phonebook.core.TestBase;
 import com.phonebook.models.Contact;
 import com.phonebook.models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class DeleteContactTests extends TestBase{
+public class DeleteContactTests extends TestBase {
 
     @BeforeMethod
     public void precondition(){
+
+        if (!app.getUser().isLoginLinkPresent()){
+            app.getUser().clickOnSignOutButton();
+        }
+
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new User()
                 .setEmail("kristitomash001@gmail.com")
